@@ -1,78 +1,123 @@
 <style>
-body {
-  background-color: black;
-}
-
-#light {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  background-color: #fff;
-  transform: translate(-50%, -50%);
-  opacity: 0; /* openai */
-  pointer-events: none;
-}
-
-  
-#audioButton:hover { /* openai */
-  opacity: 1;
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse { /* openai */
-  0% {
-    background-color: rgba(255, 255, 255, 0.1);
+  body {
+    background-color: black;
   }
-  50% {
-    background-color: rgba(255, 255, 255, 0.5);
+
+  #light {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
   }
-  100% {
-    background-color: rgba(255, 255, 255, 0.1);
+
+  .button {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    margin: 10px;
+    cursor: pointer;
   }
-}
+
+  /* Add specific background images for each button */
+  #button1 {
+    background-image: url('button1.jpg');
+  }
+
+  #button2 {
+    background-image: url('button2.jpg');
+  }
+
+  #button3 {
+    background-image: url('button3.jpg');
+  }
+
+  #button4 {
+    background-image: url('button4.jpg');
+  }
+
+  #button5 {
+    background-image: url('button5.jpg');
+  }
+
+  #button6 {
+    background-image: url('button6.jpg');
+  }
+
+  #button7 {
+    background-image: url('button7.jpg');
+  }
 </style>
 
 <div id="light"></div>
 
+<div class="button" id="button1"></div>
+<div class="button" id="button2"></div>
+<div class="button" id="button3"></div>
+<div class="button" id="button4"></div>
+<div class="button" id="button5"></div>
+<div class="button" id="button6"></div>
+<div class="button" id="button7"></div>
+
 <script>
-const light = document.querySelector("#light");
+  const light = document.querySelector("#light");
 
-document.addEventListener("mousemove", (event) => {
-  light.style.left = `${event.clientX}px`;
-  light.style.top = `${event.clientY}px`;
-  light.style.opacity = .3;
-  light.style.filter = "blur(5px)";
+  document.addEventListener("mousemove", (event) => {
+    light.style.left = `${event.clientX}px`;
+    light.style.top = `${event.clientY}px`;
+    light.style.opacity = .3;
+    light.style.filter = "blur(5px)";
 
-  setTimeout(() => {
-    light.style.opacity = 0;
-    light.style.filter = "blur(1px)";
-  }, 100);
-});
+    setTimeout(() => {
+      light.style.opacity = 0;
+      light.style.filter = "blur(1px)";
+    }, 100);
+  });
 
-const button = document.getElementById("audioButton");
-let count = 0;
+  // JavaScript code to handle button clicks
+  const button1 = document.querySelector('#button1');
+  button1.addEventListener('click', function() {
+    const audio = new Audio('button1.mp3');
+    audio.play();
+  });
 
-button.addEventListener("click", function() {
-  count += 1;
-  
-  if (count === 1) {
-    const audio1 = new Audio("but1.3.hehe.mp3");
-    audio1.play();
-    console.log(audio1)
-  } else if (count === 2) {
-    const audio2 = new Audio("but2.4.heh.mp3");
-    audio2.play();
-    console.log(audio2)
-  } else if (count === 3) {
-    const audio3 = new Audio("but3.4.hehe.mp3");
-    audio3.play();
-    console.log(audio3)
-  } else if (count === 4) {
-    const audio4 = new Audio("but4.4.hehe.mp3");
-    audio3.play();
-    console.log(audio4)
-    count = 0;
-  }
-});
+  const button2 = document.querySelector('#button2');
+  button2.addEventListener('click', function() {
+    const audio = new Audio('button2.mp3');
+    audio.play();
+  });
+
+  const button3 = document.querySelector('#button3');
+  button3.addEventListener('click', function() {
+    const audio = new Audio('button3.mp3');
+    audio.play();
+  });
+
+  const button4 = document.querySelector('#button4');
+  button4.addEventListener('click', function() {
+    const audio = new Audio('button4.mp3');
+    audio.play();
+  });
+
+  const button5 = document.querySelector('#button5');
+  button5.addEventListener('click', function() {
+    const audio = new Audio('button5.mp3');
+    audio.play();
+  });
+
+  const button6 = document.querySelector('#button6');
+  button6.addEventListener('click', function() {
+    const audio = new Audio('button6.mp3');
+    audio.play();
+  });
+
+  const button7 = document.querySelector('#button7');
+  button7.addEventListener('click', function() {
+    const audio = new Audio('button7.mp3');
+    audio.play();
+  });
 </script>
