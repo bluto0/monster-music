@@ -25,31 +25,31 @@
 
   /* Add specific background images for each button */
   #button1 {
-    background-image: url('button1.jpg');
+    background-image: url('bulb.jpg');
   }
 
   #button2 {
-    background-image: url('button2.jpg');
+    background-image: url('cloud.jpg');
   }
 
   #button3 {
-    background-image: url('button3.jpg');
+    background-image: url('dino.jpg');
   }
 
   #button4 {
-    background-image: url('button4.jpg');
+    background-image: url('ghost.jpg');
   }
 
   #button5 {
-    background-image: url('button5.jpg');
+    background-image: url('lava.jpg');
   }
 
   #button6 {
-    background-image: url('button6.jpg');
+    background-image: url('moon.jpg');
   }
 
   #button7 {
-    background-image: url('button7.jpg');
+    background-image: url('skelly.jpg');
   }
 </style>
 
@@ -76,6 +76,17 @@
       light.style.opacity = 0;
       light.style.filter = "blur(1px)";
     }, 100);
+  });
+  
+  const buttons = document.querySelectorAll('.button');
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  buttons.forEach(button => {
+    const randomLeft = Math.floor(Math.random() * windowWidth);
+    const randomTop = Math.floor(Math.random() * windowHeight);
+    button.style.left = `${randomLeft}px`;
+    button.style.top = `${randomTop}px`;
   });
 
   // JavaScript code to handle button clicks
