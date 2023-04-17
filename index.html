@@ -1,0 +1,78 @@
+<style>
+body {
+  background-color: black;
+}
+
+#light {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* openai */
+  pointer-events: none;
+}
+
+  
+#audioButton:hover { /* openai */
+  opacity: 1;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse { /* openai */
+  0% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+</style>
+
+<div id="light"></div>
+
+<script>
+const light = document.querySelector("#light");
+
+document.addEventListener("mousemove", (event) => {
+  light.style.left = `${event.clientX}px`;
+  light.style.top = `${event.clientY}px`;
+  light.style.opacity = .3;
+  light.style.filter = "blur(5px)";
+
+  setTimeout(() => {
+    light.style.opacity = 0;
+    light.style.filter = "blur(1px)";
+  }, 100);
+});
+
+const button = document.getElementById("audioButton");
+let count = 0;
+
+button.addEventListener("click", function() {
+  count += 1;
+  
+  if (count === 1) {
+    const audio1 = new Audio("but1.3.hehe.mp3");
+    audio1.play();
+    console.log(audio1)
+  } else if (count === 2) {
+    const audio2 = new Audio("but2.4.heh.mp3");
+    audio2.play();
+    console.log(audio2)
+  } else if (count === 3) {
+    const audio3 = new Audio("but3.4.hehe.mp3");
+    audio3.play();
+    console.log(audio3)
+  } else if (count === 4) {
+    const audio4 = new Audio("but4.4.hehe.mp3");
+    audio3.play();
+    console.log(audio4)
+    count = 0;
+  }
+});
+</script>
