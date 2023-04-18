@@ -90,20 +90,19 @@
     button.style.top = `${randomTop}px`;
   });
 
-  // JavaScript code to handle button clicks
 
   const but7 = document.querySelector('#button7');
   but7.addEventListener('click', function() {
     const synth = new Tone.Synth({
-      oscillator: {
-        type: 'triangle' // Change oscillator type to triangle
+      oscillator: { // START = ASSISTANCE WITH CGPT -- i want to make weird noises
+        type: 'sawtooth' //sawtooth?? -- ooo foncyyyy
       },
       envelope: {
         attack: 0.1,
         decay: 0.2,
         sustain: 0.3,
         release: 0.5
-      }
+      } // END 
     }).toDestination();
 
     synth.triggerAttackRelease('C4', '8n');
