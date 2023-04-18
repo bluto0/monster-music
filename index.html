@@ -94,22 +94,30 @@
   const but7 = document.querySelector('#button7');
   but7.addEventListener('click', function() {
     const synth = new Tone.Synth({
-      oscillator: { // START = ASSISTANCE WITH CGPT -- i want to make weird noises
-        type: 'sawtooth' //sawtooth?? -- ooo foncyyyy
+      oscillator: {
+        type: 'sawtooth'
       },
       envelope: {
         attack: 0.1,
         decay: 0.2,
         sustain: 0.3,
         release: 0.5
-      } // END 
+      }
     }).toDestination();
 
-    synth.triggerAttackRelease('C4', '8n');
+    // Add a reverb effect to make the sound more ghostly
+    const effect = new Tone.Reverb({
+      decay: 5,
+      wet: 0.5
+    }).toDestination();
+    synth.connect(effect);
+
+    synth.triggerAttackRelease('C4', '4n');
 
     const audio = new Audio('button7.mp3');
     audio.play();
   });
+
   
   const button1 = document.querySelector('#button1');
   button1.addEventListener('click', function() {
