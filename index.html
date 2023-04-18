@@ -90,6 +90,28 @@
   });
 
   // JavaScript code to handle button clicks
+
+  const button7 = document.querySelector('#button7');
+  button7.addEventListener('click', function() {
+    const synth = new Tone.Synth({
+      oscillator: {
+        type: 'triangle' // Change oscillator type to triangle
+      },
+      envelope: {
+        attack: 0.1,
+        decay: 0.2,
+        sustain: 0.3,
+        release: 0.5
+      }
+    }).toDestination();
+
+    synth.triggerAttackRelease('C4', '8n');
+
+    const audio = new Audio('button7.mp3');
+    audio.play();
+  });
+
+  
   const button1 = document.querySelector('#button1');
   button1.addEventListener('click', function() {
     const audio = new Audio('button1.mp3');
