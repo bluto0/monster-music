@@ -13,6 +13,7 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     pointer-events: none;
+    z-index: 1;
   }
 
   .button {
@@ -20,8 +21,13 @@
     width: 150px;
     height: 150px;
     background-size: cover;
-    margin: 10px;
+    margin: 0;
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
   }
 
   /* Add specific background images for each button */
@@ -78,19 +84,42 @@
       light.style.filter = "blur(1px)";
     }, 100);
   });
-  
-  const buttons = document.querySelectorAll('.button');
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
 
-  buttons.forEach(button => {
-    const randomLeft = Math.floor(Math.random() * windowWidth);
-    const randomTop = Math.floor(Math.random() * windowHeight);
-    button.style.left = `${randomLeft}px`;
-    button.style.top = `${randomTop}px`;
+  const buttons = document.querySelectorAll('.button');
+  const numButtons = buttons.length;
+  const radius = 300;
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  buttons.forEach((button, index) => {
+    const angle = (index / numButtons) * 2 * Math.PI;
+    const x = centerX + radius * Math.cos(angle) - button.offsetWidth / 2;
+    const y = centerY + radius * Math.sin(angle) - button.offsetHeight / 2;
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
   });
 
 
+//   const but7 = document.querySelector('#button7');
+//   but7.addEventListener('click', function() {
+//     const synth = new Tone.Synth({
+//       oscillator: { // START = ASSISTANCE WITH CGPT -- i want to make weird noises
+//         type: 'triangle' //sawtooth?? -- ooo foncyyyy
+//       },
+//       envelope: {
+//         attack: 0.1,
+//         decay: 0.2,
+//         sustain: 0.3,
+//         release: 0.5
+//       } // END 
+//     }).toDestination();
+
+//     synth.triggerAttackRelease('C4', '4n');
+
+//     const audio = new Audio('button7.mp3');
+//     audio.play();
+//   });
+  
   const but7 = document.querySelector('#button7');
   but7.addEventListener('click', function() {
     const synth = new Tone.Synth({
@@ -117,7 +146,6 @@
     const audio = new Audio('button7.mp3');
     audio.play();
   });
-
   
   const button1 = document.querySelector('#button1');
   button1.addEventListener('click', function() {
