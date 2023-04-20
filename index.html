@@ -1,4 +1,18 @@
 <script src="https://tonejs.github.io/build/Tone.js"></script>
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Monster Music</title>
+  </head>
+  <body>
+    <div id="intro">
+      <h1>Welcome to Monster Music</h1>
+      <button onclick="location.href='page2.html'">Enter - If you dare</button>
+    </div>
+  </body>
+</html> -->
+
 <style>
   body {
     background-color: black;
@@ -24,9 +38,9 @@
     margin: 0;
     cursor: pointer;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%;
+    transform: translate(-0%, 15%);
     z-index: 0;
   }
 
@@ -76,7 +90,7 @@
   document.addEventListener("mousemove", (event) => {
     light.style.left = `${event.clientX}px`;
     light.style.top = `${event.clientY}px`;
-    light.style.opacity = .3;
+    light.style.opacity = 0.3;
     light.style.filter = "blur(5px)";
 
     setTimeout(() => {
@@ -84,13 +98,14 @@
       light.style.filter = "blur(1px)";
     }, 100);
   });
-
+	
+  //to organize the buttons into a circle -- utilized ChatGPT for some errors
   const buttons = document.querySelectorAll('.button');
   const numButtons = buttons.length;
   const radius = 300;
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 2;
-
+  
   buttons.forEach((button, index) => {
     const angle = (index / numButtons) * 2 * Math.PI;
     const x = centerX + radius * Math.cos(angle) - button.offsetWidth / 2;
@@ -98,93 +113,232 @@
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
   });
-
-
-//   const but7 = document.querySelector('#button7');
-//   but7.addEventListener('click', function() {
-//     const synth = new Tone.Synth({
-//       oscillator: { // START = ASSISTANCE WITH CGPT -- i want to make weird noises
-//         type: 'triangle' //sawtooth?? -- ooo foncyyyy
-//       },
-//       envelope: {
-//         attack: 0.1,
-//         decay: 0.2,
-//         sustain: 0.3,
-//         release: 0.5
-//       } // END 
-//     }).toDestination();
-
-//     synth.triggerAttackRelease('C4', '4n');
-
-//     const audio = new Audio('button7.mp3');
-//     audio.play();
-//   });
   
+  //BUTTON 1 MUSIC//
+  const audio1 = new Audio('button1.mp3');
+
+  const synth1 = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.5,
+      decay: 0.5,
+      sustain: 0.5,
+      release: 1
+    }
+  }).toDestination();
+
+  const but1 = document.querySelector('#button1');
+  but1.addEventListener('click', function() {
+    audio1.play();
+    synth.triggerAttackRelease("E6", "4n");
+  });
+  // -----
+  
+  //BUTTON 2 MUSIC//
+  const audio2 = new Audio('button2.mp3');
+
+  const synth2 = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.5,
+      decay: 0.5,
+      sustain: 0.5,
+      release: 1
+    }
+  }).toDestination();
+
+  const but2 = document.querySelector('#button2');
+  but2.addEventListener('click', function() {
+    audio2.play();
+    synth.triggerAttackRelease("G5", "4n");
+  });
+  // -----
+  
+  //BUTTON 3 MUSIC//
+  const audio3 = new Audio('button3.mp3');
+
+  const synth3 = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.5,
+      decay: 0.5,
+      sustain: 0.5,
+      release: 1
+    }
+  }).toDestination();
+
+  const but3 = document.querySelector('#button3');
+  but3.addEventListener('click', function() {
+    audio3.play();
+    synth.triggerAttackRelease("C3", "4n");
+  });
+  // -----
+  
+
+  //BUTTON 4 MUSIC// -- utilized ChatGPT to expiriment with the flute stuff
+  const audio4 = new Audio('button4.mp3');
+
+  const flute = new Tone.Sampler({
+    urls: {
+      C4: "flute.wav"
+    },
+    release: 1,
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
+  }).toDestination();
+
+  const synth4 = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.1,
+      decay: 0.2,
+      sustain: 0.5,
+      release: 2
+    }
+  }).toDestination();
+
+  // Add an effect to the synth to make it sound more eerie
+  const effect = new Tone.Reverb({
+    decay: 5,
+    wet: 0.9
+  }).toDestination();
+  synth4.connect(effect);
+
+  // Play a sequence of notes
+  const notes = ["C4", "E4", "G4", "C5", "E5", "G5", "C6", "E6", "G6"];
+  const sequence = new Tone.Sequence((time, note) => {
+    // do nothing here
+  }, notes).start();
+
+  const but4 = document.querySelector('#button4');
+  but4.addEventListener('click', function() {
+    audio4.play();
+    synth4.triggerAttackRelease("C4", "4n");
+  });
+
+  Tone.start();
+  //----
+  
+  //BUTTON 5 MUSIC//
+  const audio5 = new Audio('button5.mp3');
+
+  const synth5 = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.5,
+      decay: 0.5,
+      sustain: 0.5,
+      release: 1
+    }
+  }).toDestination();
+
+  const but5 = document.querySelector('#button5');
+  but5.addEventListener('click', function() {
+    audio5.play();
+    synth.triggerAttackRelease("C4", "4n");
+  });
+  // -----
+  
+  
+  //BUTTON 6 MUSIC//
+  const audio6 = new Audio('button6.mp3');
+
+  const synth6 = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.1,
+      decay: 0.2,
+      sustain: 0.5,
+      release: 1
+    }
+  }).toDestination();
+
+  const but6 = document.querySelector('#button6');
+  but6.addEventListener('click', function() {
+    audio6.play();
+    synth.triggerAttackRelease("E4", "4n");
+  });
+  // -----
+
+
+  //BUTTON 7 MUSIC//
+  const audio7 = new Audio('button7.mp3');
+
+  const synth = new Tone.Synth({
+    oscillator: {
+      type: "sine"
+    },
+    envelope: {
+      attack: 0.1,
+      decay: 0.2,
+      sustain: 0.5,
+      release: 1
+    }
+  }).toDestination();
+
   const but7 = document.querySelector('#button7');
   but7.addEventListener('click', function() {
-    const synth = new Tone.Synth({
-      oscillator: {
-        type: 'sawtooth'
-      },
-      envelope: {
-        attack: 0.1,
-        decay: 0.2,
-        sustain: 0.3,
-        release: 0.5
-      }
-    }).toDestination();
-
-    // Add a reverb effect to make the sound more ghostly
-    const effect = new Tone.Reverb({
-      decay: 5,
-      wet: 0.5
-    }).toDestination();
-    synth.connect(effect);
-
-    synth.triggerAttackRelease('C4', '4n');
-
-    const audio = new Audio('button7.mp3');
-    audio.play();
+    audio7.play();
+    synth.triggerAttackRelease("C2", "4n");
   });
-  
+  // -----
+
   const button1 = document.querySelector('#button1');
   button1.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#891467";
     const audio = new Audio('button1.mp3');
     audio.play();
   });
 
   const button2 = document.querySelector('#button2');
   button2.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#b4b4b4";
     const audio = new Audio('button2.mp3');
     audio.play();
   });
 
   const button3 = document.querySelector('#button3');
   button3.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#141c34";
     const audio = new Audio('button3.mp3');
     audio.play();
   });
 
   const button4 = document.querySelector('#button4');
   button4.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#00989e";
     const audio = new Audio('button4.mp3');
     audio.play();
   });
 
   const button5 = document.querySelector('#button5');
   button5.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#e9a56d";
     const audio = new Audio('button5.mp3');
     audio.play();
   });
 
   const button6 = document.querySelector('#button6');
   button6.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#f8fc80";
     const audio = new Audio('button6.mp3');
     audio.play();
   });
 
   const button7 = document.querySelector('#button7');
   button7.addEventListener('click', function() {
+    document.body.style.backgroundColor = "#fcbdbd";
     const audio = new Audio('button7.mp3');
     audio.play();
   });
